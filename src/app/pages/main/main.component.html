@@ -1,0 +1,23 @@
+<div class="main-container">
+  <div class="menu-items-container">
+    <div
+      class="radio-group-container"
+      *ngFor="let items of data.menus; let menuIndex = index"
+    >
+      <div class="radio-inputs" *ngFor="let item of items">
+        <input
+          class="radio"
+          type="radio"
+          [id]="'id' + item?.id"
+          [name]="'radio-group' + menuIndex"
+          (change)="onItemClick(item.id, menuIndex)"
+          [disabled]="isInvalid(item.id, menuIndex)"
+        />
+        <label [for]="'id' + item?.id">{{ item?.value }}</label>
+      </div>
+    </div>
+    <div class="btn-action-container">
+      <button class="btn btn-clear" (click)="clear()">Clear</button>
+    </div>
+  </div>
+</div>
